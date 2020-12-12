@@ -1,0 +1,13 @@
+extends Node
+
+#root should be root node of a scene but can be any node in the scene
+func save_scene(tree:SceneTree, filename:String) -> int:
+	var root = tree.current_scene
+	var scene = PackedScene.new()
+	for x in root.get_children():
+		x.set_owner(root)
+	scene.pack(root)
+	return ResourceSaver.save(filename,scene)
+
+func load_scene(tree:SceneTree, filename:String) -> int:
+	return tree.change_scene(filename)
