@@ -1,6 +1,8 @@
-extends Node
+extends Reference
 
-func save_scene(tree:SceneTree, filename:String) -> int:
+class_name SimpleSave
+
+static func save_scene(tree:SceneTree, filename:String) -> int:
 	var root = tree.current_scene
 	var scene = PackedScene.new()
 	for x in root.get_children():
@@ -8,5 +10,5 @@ func save_scene(tree:SceneTree, filename:String) -> int:
 	scene.pack(root)
 	return ResourceSaver.save(filename,scene)
 
-func load_scene(tree:SceneTree, filename:String) -> int:
+static func load_scene(tree:SceneTree, filename:String) -> int:
 	return tree.change_scene(filename)

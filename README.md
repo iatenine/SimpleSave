@@ -2,9 +2,7 @@
 
 ## How to install
  - Add simple_save.gd to your project files
- - Go to Project -> Project Settings -> AutoLoad
- - Click the folder icon next to "Path" and select simple_save.gd from your project files
-   - The name "SimpleSave" is recommended and will be used in examples below
+ - You should now be able to call the functions listed below by calling SimpleSave.function_name()
 
 ## Methods
 
@@ -16,7 +14,8 @@ Error | load_scene(tree:SceneTree, filename:String) | Changes the scene provided
 
 ## Examples
 - Saving 
-   - Can be called from any node within the target scene
+   - Can be called from any node within the target scene by passing "get_tree()" as the first parameter
+   - You can save a SceneTree from an external node but will need to pass a reference to it as the first parameter (uncommon)
    - Will overwrite a file if it exists already
    - Will fail if the filepath references a directory that doesn't exist in your project
       > SimpleSave.save_scene(get_tree(), "res://save_slots/snapshot0.tscn")
